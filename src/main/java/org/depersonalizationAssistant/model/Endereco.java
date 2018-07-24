@@ -7,17 +7,28 @@ public class Endereco {
 	private String cep;
 	private String estado;
 	private String complemento;
+	private String cidade;
 
 	public Endereco() {
 	}
 
-	public Endereco(Long id, Long idPaciente, String rua, String cep, String estado, String complemento) {
+	public Endereco(Long id, Long idPaciente, String rua, String cep, String estado, String complemento,
+			String cidade) {
 		this.id = id;
 		this.idPaciente = idPaciente;
 		this.rua = rua;
 		this.cep = cep;
 		this.estado = estado;
 		this.complemento = complemento;
+		this.cidade = cidade;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 
 	public Long getId() {

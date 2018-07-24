@@ -9,14 +9,11 @@ public class Paciente {
 	private String cpf;
 	private String telefone;
 	private Endereco endereco;
-	private Patologia patologia;
 
 	public Paciente() {
 	}
 
-	public Paciente(int id, String nome, String email, Character sexo, String cpf, String telefone, Endereco endereco,
-			Patologia patologia) {
-		super();
+	public Paciente(int id, String nome, String email, Character sexo, String cpf, String telefone, Endereco endereco) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
@@ -24,7 +21,6 @@ public class Paciente {
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.endereco = endereco;
-		this.patologia = patologia;
 	}
 
 	public int getId() {
@@ -45,14 +41,6 @@ public class Paciente {
 
 	public String getEmail() {
 		return email;
-	}
-
-	public Patologia getPatologia() {
-		return patologia;
-	}
-
-	public void setPatologia(Patologia patologia) {
-		this.patologia = patologia;
 	}
 
 	public void setEmail(String email) {
