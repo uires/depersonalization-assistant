@@ -8,7 +8,9 @@ import java.sql.Statement;
 import org.depersonalizationAssistant.factory.ConnectionFactory;
 import org.depersonalizationAssistant.model.Endereco;
 import org.depersonalizationAssistant.model.Paciente;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class PacienteDAO {
 
 	public void cadastraPaciente(Paciente paciente) {
