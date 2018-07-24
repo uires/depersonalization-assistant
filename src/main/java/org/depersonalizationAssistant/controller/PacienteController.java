@@ -1,9 +1,9 @@
 package org.depersonalizationAssistant.controller;
 
+import org.depersonalizationAssistant.model.Endereco;
 import org.depersonalizationAssistant.model.Paciente;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -14,8 +14,10 @@ public class PacienteController {
 		return new ModelAndView("paciente/cadastropaciente");
 	}
 
-	@RequestMapping(value = "cadastrarPaciente", method = RequestMethod.POST)
-	public ModelAndView cadastro(Paciente paciente) {
-		return new ModelAndView();
+	@RequestMapping("cadastrar")
+	public ModelAndView cadastro(Paciente paciente, Endereco endereco) {
+		paciente.setEndereco(endereco);
+		System.out.println(paciente);
+		return new ModelAndView("/");
 	}
 }
