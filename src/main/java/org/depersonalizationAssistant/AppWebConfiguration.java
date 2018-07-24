@@ -1,5 +1,6 @@
 package org.depersonalizationAssistant;
 
+import org.depersonalizationAssistant.controller.HomeController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +9,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackageClasses = {})
+@ComponentScan(basePackageClasses = { HomeController.class })
 public class AppWebConfiguration {
 
 	@Bean
