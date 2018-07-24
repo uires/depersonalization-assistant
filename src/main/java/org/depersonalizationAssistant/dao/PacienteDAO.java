@@ -12,7 +12,7 @@ import org.depersonalizationAssistant.model.Paciente;
 public class PacienteDAO {
 
 	public void cadastraPaciente(Paciente paciente) {
-		String sql = "INSERT INTO paciente (nome, email, sexo, cpf, telefone) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO paciente (nome, email, sexo, cpf, telefone, data_nascimento) VALUES (?, ?, ?, ?, ?, ?)";
 		try {
 			Connection conexao = ConnectionFactory.getConnection();
 
@@ -23,28 +23,25 @@ public class PacienteDAO {
 			sentenca.setString(3, paciente.getSexo());
 			sentenca.setString(4, paciente.getCpf());
 			sentenca.setString(5, paciente.getTelefone());
-			sentenca.execute();
+			java.sql.Date dataSql = new java.sql.Date(paciente.getDataNascimento().getTime());
+			sentenca.setDate(6, dataSql);
+			sentenca.executeUpdate();
 			this.cadastrarEndereco(paciente.getEndereco(), (long) sentenca.getGeneratedKeys().getInt(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void cadastrarEndereco(Endereco endereco, Long idPaciente) {
+	private void cadastrarEndereco(Endereco endereco, Long idPaciente) throws SQLException {
 		String sql = "INSERT INTO endereco (id_paciente, rua, cep, estado, complemento, cidade) VALUES (?, ?, ?, ?, ?, ?)";
-		try {
-			Connection conexao = ConnectionFactory.getConnection();
-			PreparedStatement statement = conexao.prepareStatement(sql);
-			statement.setLong(1, idPaciente);
-			statement.setString(2, endereco.getRua());
-			statement.setString(3, endereco.getCep());
-			statement.setString(4, endereco.getEstado());
-			statement.setString(5, endereco.getComplemento());
-			statement.setString(6, endereco.getCidade());
-			statement.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		Connection conexao = ConnectionFactory.getConnection();
+		PreparedStatement statement = conexao.prepareStatement(sql);
+		statement.setLong(1, idPaciente);
+		statement.setString(2, endereco.getRua());
+		statement.setString(3, endereco.getCep());
+		statement.setString(4, endereco.getEstado());
+		statement.setString(5, endereco.getComplemento());
+		statement.setString(6, endereco.getCidade());
+		statement.execute();
 	}
-
 }

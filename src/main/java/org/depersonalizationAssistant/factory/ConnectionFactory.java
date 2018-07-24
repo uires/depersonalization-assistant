@@ -11,7 +11,7 @@ public class ConnectionFactory {
 
 	public static Connection getConnection() throws SQLException {
 		try {
-			Class.forName("org.mysql.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException error) {
 			error.printStackTrace();
 		}
