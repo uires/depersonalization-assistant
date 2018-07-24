@@ -22,6 +22,7 @@ public class Endereco {
 		this.complemento = complemento;
 		this.cidade = cidade;
 	}
+	
 
 	public String getCidade() {
 		return cidade;

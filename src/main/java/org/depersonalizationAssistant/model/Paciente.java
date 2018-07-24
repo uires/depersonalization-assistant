@@ -5,15 +5,15 @@ public class Paciente {
 	private int id;
 	private String nome;
 	private String email;
-	private Character sexo;
+	private String sexo;
 	private String cpf;
 	private String telefone;
 	private Endereco endereco;
 
 	public Paciente() {
 	}
-
-	public Paciente(int id, String nome, String email, Character sexo, String cpf, String telefone, Endereco endereco) {
+	
+	public Paciente(int id, String nome, String email, String sexo, String cpf, String telefone, Endereco endereco) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
@@ -22,7 +22,7 @@ public class Paciente {
 		this.telefone = telefone;
 		this.endereco = endereco;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -47,11 +47,11 @@ public class Paciente {
 		this.email = email;
 	}
 
-	public Character getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(Character sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
@@ -78,5 +78,13 @@ public class Paciente {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+	
+	@Override
+	public String toString() {
+		return "[\nNome" + this.nome + "\nEmail:" + this.getEmail() + "\n" + this.getTelefone() + "\nEndereço:"
+				+ this.getEndereco().getEstado() + "\nRua:" + this.getEndereco().getRua() + "\nCidade:"
+				+ this.getEndereco().getCidade();
+	}
+	
 
 }
