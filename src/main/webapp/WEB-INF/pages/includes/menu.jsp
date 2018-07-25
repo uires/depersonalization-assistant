@@ -2,13 +2,14 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 <link href="<spring:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 <link href="<spring:url value="/resources/css/style.css" />"
 	rel="stylesheet" />
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
 	<div class="container">
 		<a class="navbar-brand" href="/dashboard">
 	 	 <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBl
@@ -42,22 +43,21 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="/dashboard">Dashboard<span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="<c:url value="/dashboard" />">Dashboard<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="paciente/cadastro">Cadastro</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Dicas</a>
+					<a class="nav-link" href="<c:url value="paciente/cadastro" />">Cadastro</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Relatórios</a>
 				</li>
+				<c:if test="${logado eq true}">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Meus Relatórios</a>
+					</li>
+				</c:if>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Meus Relatórios</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">O que é despersonalização?</a>
+					<a class="nav-link" href="<c:url value="/sobre" />">O que é despersonalização?</a>
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">

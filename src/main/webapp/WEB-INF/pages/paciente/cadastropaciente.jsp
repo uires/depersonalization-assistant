@@ -15,7 +15,7 @@
 </head>
 <body>
 	<c:import url="../includes/menu.jsp" />
-	<div class="container" style="margin-top: 30px;">
+	<div class="container" style="margin-top: 100px;">
 		<form action="${spring:mvcUrl('PC#cadastro').build()} " method="POST">
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
