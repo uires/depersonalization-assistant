@@ -7,18 +7,15 @@ public class Patologia {
 	private Long idPaciente;
 	private NomePatologia nomePatologia;
 	private Calendar dataInicio;
-	private Relatorio relatorioPatologia;
 
 	public Patologia() {
 	}
 
-	public Patologia(Long id, Long idPaciente, NomePatologia nomePatologia, Calendar dataInicio,
-			Relatorio relatorioPatologia) {
+	public Patologia(Long id, Long idPaciente, NomePatologia nomePatologia, Calendar dataInicio) {
 		this.id = id;
 		this.idPaciente = idPaciente;
 		this.nomePatologia = nomePatologia;
 		this.dataInicio = dataInicio;
-		this.relatorioPatologia = relatorioPatologia;
 	}
 
 	public Long getId() {
@@ -51,14 +48,6 @@ public class Patologia {
 
 	public void setDataInicio(Calendar dataInicio) {
 		this.dataInicio = dataInicio;
-	}
-
-	public Relatorio getRelatorioPatologia() {
-		return relatorioPatologia;
-	}
-
-	public void setRelatorioPatologia(Relatorio relatorioPatologia) {
-		this.relatorioPatologia = relatorioPatologia;
 	}
 
 }

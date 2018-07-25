@@ -1,5 +1,5 @@
 package org.depersonalizationAssistant.model;
 
 public enum NomePatologia {
-	ANSIEDADE, DESPERSONALIZAÇÃO
+	ANSIEDADE, DESPERSONALIZAÇÃO, DESREALIZAÇÃO
 }
