@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>DA - Home</title>
+<title>Despersonalização Assistente - Dashboard</title>
 </head>
 <body>
-	<c:import url="paciente/menu.jsp" />
-
+	<c:import url="includes/menu.jsp" />
+	
 
 
 
