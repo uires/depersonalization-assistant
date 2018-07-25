@@ -20,7 +20,7 @@ public class PacienteController {
 	private PacienteDAO dao;
 
 	@RequestMapping("paciente/cadastro")
-	public ModelAndView form() {
+	public ModelAndView pacienteMapping() {
 		return new ModelAndView("paciente/cadastropaciente");
 	}
 
@@ -32,8 +32,8 @@ public class PacienteController {
 		return new ModelAndView("redirect:/dashboard");
 	}
 
-	@RequestMapping("/login")
-	public ModelAndView logar() {
+	@RequestMapping("paciente/login")
+	public ModelAndView logarMapping() {
 		return new ModelAndView("paciente/login");
 	}
 
@@ -43,6 +43,7 @@ public class PacienteController {
 			sessionHttpObjectServlet.setAttribute("usuario.logado", dao.logar(paciente));
 			return new ModelAndView("redirect:/dashboard");
 		} else {
+			System.out.println("veio nulo");
 			return new ModelAndView("redirect:/login");
 		}
 	}
