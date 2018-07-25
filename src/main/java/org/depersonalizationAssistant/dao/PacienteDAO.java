@@ -83,7 +83,7 @@ public class PacienteDAO {
 	}
 
 	private Endereco selectEndereco(Paciente paciente) throws SQLException {
-		Endereco endereco = null;
+		Endereco endereco = new Endereco();
 		String sql = "SELECT * FROM endereco WHERE id_paciente = ?";
 		Connection conexao = ConnectionFactory.getConnection();
 		PreparedStatement preparedStatement = conexao.prepareStatement(sql);
@@ -100,5 +100,24 @@ public class PacienteDAO {
 			endereco.setRua(resultSet.getString("rua"));
 		}
 		return endereco;
+	}
+
+	public Paciente logar(Paciente paciente) {
+		String sql = "SELECT * FROM paciente WHERE email = ? AND senha = MD5(?)";
+		Connection conexao;
+		try {
+			conexao = ConnectionFactory.getConnection();
+			PreparedStatement statement = conexao.prepareStatement(sql);
+			statement.setString(1, paciente.getEmail());
+			statement.setString(2, paciente.getSenha());
+			ResultSet executeQuery = statement.executeQuery();
+
+			if (executeQuery.next()) {
+				return this.selectPacienteAndEnderecoById(executeQuery.getLong("id"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
