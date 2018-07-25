@@ -1,5 +1,7 @@
 package org.depersonalizationAssistant.model;
 
+import java.util.Calendar;
+
 public class Paciente {
 
 	private int id;
@@ -8,11 +10,13 @@ public class Paciente {
 	private String sexo;
 	private String cpf;
 	private String telefone;
+	private Calendar dataNascimento;
 	private Endereco endereco;
+	private String senha;
 
 	public Paciente() {
 	}
-	
+
 	public Paciente(int id, String nome, String email, String sexo, String cpf, String telefone, Endereco endereco) {
 		this.id = id;
 		this.nome = nome;
@@ -22,7 +26,7 @@ public class Paciente {
 		this.telefone = telefone;
 		this.endereco = endereco;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -37,6 +41,14 @@ public class Paciente {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Calendar getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Calendar dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public String getEmail() {
@@ -78,13 +90,20 @@ public class Paciente {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	@Override
 	public String toString() {
 		return "[\nNome" + this.nome + "\nEmail:" + this.getEmail() + "\n" + this.getTelefone() + "\nEndereço:"
 				+ this.getEndereco().getEstado() + "\nRua:" + this.getEndereco().getRua() + "\nCidade:"
 				+ this.getEndereco().getCidade();
 	}
-	
 
 }
