@@ -4,3 +4,29 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+.navbar-inverse {
+	background-color: #468420;
+}
+
+.controll-nav ul, .controll-nav li {
+	margin: 0;
+	padding: 0;
+}
+
+.controll-nav a {
+	color: white;
+}
+.controll-nav li img{
+	vertical-align: middle;
+}
+.controll-nav li {
+	list-style: none;
+	float: left;
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.controll-nav {
+	float: left;
+}
