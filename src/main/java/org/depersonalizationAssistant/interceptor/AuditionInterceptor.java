@@ -15,14 +15,18 @@ public class AuditionInterceptor extends HandlerInterceptorAdapter {
 				|| request.getRequestURI().endsWith("sobre") || request.getRequestURI().contains("resources")) {
 			return true;
 		}
-		if((request.getSession().getAttribute("usuario.logado")!= null) && request.getRequestURI().endsWith("login")){
+		if (request.getRequestURI().endsWith("cadastro")) {
+			response.sendRedirect("/");
+		}
+		if ((request.getSession().getAttribute("usuario.logado") != null)
+				&& request.getRequestURI().endsWith("login")) {
 			response.sendRedirect("/dashboard");
 		}
 		if (request.getSession().getAttribute("usuario.logado") != null) {
 			return true;
 		} else {
 			response.sendRedirect("paciente/login");
-			
+
 			return false;
 		}
 
