@@ -1,6 +1,6 @@
 package depersonalizationAssistant.teste;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import org.depersonalizationAssistant.dao.PacienteDAO;
 import org.depersonalizationAssistant.model.Endereco;
@@ -17,7 +17,7 @@ public class PacienteTest {
 		paciente.setSexo("F");
 		paciente.setCpf("003.030.211-87");
 		paciente.setTelefone("41-9732-0145");
-		paciente.setDataNascimento(new Date());
+		paciente.setDataNascimento(Calendar.getInstance());
 		Endereco endereco = new Endereco();
 		endereco.setCep("41111-123");
 		endereco.setCidade("São Paulo");
