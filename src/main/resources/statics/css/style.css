@@ -30,3 +30,6 @@ body {
 .controll-nav {
 	float: left;
 }
+.nav-item a {
+	color: white !important;
+}
