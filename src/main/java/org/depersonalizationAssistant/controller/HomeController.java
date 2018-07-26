@@ -7,6 +7,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
+	@RequestMapping("/")
+	public ModelAndView dashboardHome() {
+		return new ModelAndView("index");
+	}
+
 	@RequestMapping("/dashboard")
 	public ModelAndView dashboard() {
 		return new ModelAndView("index");
