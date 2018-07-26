@@ -2,13 +2,15 @@ package depersonalizationAssistant.teste;
 
 import java.util.Calendar;
 
-import org.depersonalizationAssistant.dao.PacienteDAO;
-import org.depersonalizationAssistant.model.Endereco;
+import org.depersonalizationAssistant.dao.RelatorioDAO;
+import org.depersonalizationAssistant.model.NomePatologia;
 import org.depersonalizationAssistant.model.Paciente;
+import org.depersonalizationAssistant.model.Patologia;
+import org.depersonalizationAssistant.model.Relatorio;
 import org.junit.Test;
 
 public class PacienteTest {
-
+	/*
 	@Test
 	public void cadastro(){
 		Paciente paciente = new Paciente();
@@ -27,5 +29,21 @@ public class PacienteTest {
 		paciente.setEndereco(endereco);
 		PacienteDAO dao = new PacienteDAO();
 		dao.cadastraPaciente(paciente);
+	}
+	*/
+	
+	@Test
+	public void cadastarPatologiaAnd (){
+		Paciente p = new Paciente();
+		p.setId(1);
+		Relatorio rela = new Relatorio();
+		rela.setIdPaciente((long)p.getId());
+		rela.setDescricao("Sofri com grandes crises de DP, creio que mudou minha vida.");
+		Patologia pato = new Patologia();
+		pato.setDataInicio(Calendar.getInstance());
+		pato.setNomePatologia(NomePatologia.ANSIEDADE);
+		rela.setPatologia(pato);
+		RelatorioDAO dao = new RelatorioDAO();
+		dao.cadastraRelatorio(rela, (long) p.getId());
 	}
 }
