@@ -4,7 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.depersonalizationAssistant.controller.HomeController;
 import org.depersonalizationAssistant.controller.PacienteController;
+import org.depersonalizationAssistant.controller.RelatorioController;
 import org.depersonalizationAssistant.dao.PacienteDAO;
+import org.depersonalizationAssistant.dao.RelatorioDAO;
 import org.depersonalizationAssistant.interceptor.AuditionInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,7 +20,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackageClasses = { HomeController.class, PacienteController.class, PacienteDAO.class })
+@ComponentScan(basePackageClasses = { HomeController.class, PacienteController.class, PacienteDAO.class,
+		RelatorioDAO.class, RelatorioController.class })
 public class AppWebConfiguration implements WebMvcConfigurer {
 
 	@Bean
@@ -36,5 +39,5 @@ public class AppWebConfiguration implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new AuditionInterceptor());
 	}
-
+	
 }
