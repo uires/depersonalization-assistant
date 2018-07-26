@@ -11,7 +11,7 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
 	<div class="container">
-		<a class="navbar-brand" href="/dashboard">
+		<a class="navbar-brand" href="<c:url value="/dashboard" />">
 	 	 <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBl
 					bmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0c
 					mF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMC
@@ -46,16 +46,11 @@
 					<a class="nav-link" href="<c:url value="/dashboard" />">Dashboard<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<c:url value="paciente/cadastro" />">Cadastro</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link" href="#">Relatórios</a>
 				</li>
-				<c:if test="${logado eq true}">
-					<li class="nav-item">
-						<a class="nav-link" href="#">Meus Relatórios</a>
-					</li>
-				</c:if>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Meus Relatórios</a>
+				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="<c:url value="/sobre" />">O que é despersonalização?</a>
 				</li>

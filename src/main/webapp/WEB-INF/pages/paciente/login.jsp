@@ -16,8 +16,7 @@
 <body>
 	<c:import url="../includes/menu.jsp" />
 	<div class="container" style="margin-top: 100px;">
-		<form action="${spring:mvcUrl('PC#logar').build()} " method="POST">
-		
+		<form action="${spring:mvcUrl('PC#logar').build()}" method="POST" style="margin: auto; width: 300px;">
 				<div>
 					<label>E-mail</label>
 					<div class="input-group">
@@ -34,9 +33,10 @@
 							<span class="input-group-text" >*</span>
 						</div>
 						<input name="senha" type="password" class="form-control" required>
+						<a href="<c:url value="paciente/cadastro" />">Cadastre-se aqui</a>
 					</div>
 				</div>
-			<br /><button class="btn btn-primary" type="submit">Logar</button>
+			<br /><button class="btn btn-primary" type="submit" >Logar</button>
 		</form>
 	</div>
 </body>
