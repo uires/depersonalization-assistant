@@ -34,6 +34,7 @@ public class RelatorioController {
 		return new ModelAndView("/");
 	}
 
+	@RequestMapping(value = "relatorio/meusrelatorios", method = RequestMethod.GET)
 	public ModelAndView relatoriosReturn(HttpSession session) {
 		LinkedList<Relatorio> selectAllRelatoriosPacienteSession = repository
 				.selectAllRelatoriosPacienteSession(SessionModelReturn.getPaciente(session).getId());
