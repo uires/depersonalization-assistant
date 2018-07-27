@@ -9,7 +9,9 @@ import java.sql.Statement;
 import org.depersonalizationAssistant.factory.ConnectionFactory;
 import org.depersonalizationAssistant.model.Patologia;
 import org.depersonalizationAssistant.model.Relatorio;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class RelatorioDAO {
 
 	public void cadastraRelatorio(Relatorio relatorio, Long id) {
