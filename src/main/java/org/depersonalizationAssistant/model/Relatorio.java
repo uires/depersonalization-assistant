@@ -3,6 +3,7 @@ package org.depersonalizationAssistant.model;
 public class Relatorio {
 	private Long id;
 	private Long idPaciente;
+	private Long idPatologia;
 	private Patologia patologia;
 	private String descricao;
 
@@ -47,6 +48,14 @@ public class Relatorio {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Long getIdPatologia() {
+		return idPatologia;
+	}
+
+	public void setIdPatologia(Long idPatologia) {
+		this.idPatologia = idPatologia;
 	}
 
 }
