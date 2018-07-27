@@ -1,7 +1,6 @@
 package org.depersonalizationAssistant.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +14,9 @@ public class RelatorioDAO {
 
 	public void cadastraRelatorio(Relatorio relatorio, Long id) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("INSERT INTO relatorio ( " + "id_paciente, id_patologia, descricao) " + "VALUES (?, ?, ?)");
+		sql.append("INSERT INTO relatorio ( " 
+					+ "id_paciente, id_patologia, descricao) " 
+					+ "VALUES (?, ?, ?)");
 		try {
 			Connection conexao = ConnectionFactory.getConnection();
 			PreparedStatement preparedStatement = conexao.prepareStatement(sql.toString());
@@ -34,14 +35,15 @@ public class RelatorioDAO {
 	private long insertPatologia(Connection conexao, Patologia patologia) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("INSERT INTO patologia ( ");
-		sql.append("nome_patologia, data_inicio) " + "VALUES (?, ?, ?)");
+		sql.append("nome_patologia, data_inicio) " 
+					+ "VALUES (?, ?)");
 		try {
 			PreparedStatement prepareStatement = conexao.prepareStatement(sql.toString(),
 					Statement.RETURN_GENERATED_KEYS);
 			prepareStatement.setString(1, patologia.getNomePatologia().toString());
 			java.sql.Date dateConvert = new java.sql.Date(patologia.getDataInicio().getTimeInMillis());
 			prepareStatement.setDate(2, dateConvert);
-			prepareStatement.executeQuery();
+			prepareStatement.executeUpdate();
 			ResultSet executeQuery = prepareStatement.getGeneratedKeys();
 			if (executeQuery.next()) {
 				long long1 = executeQuery.getLong(1);
@@ -51,8 +53,32 @@ public class RelatorioDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		return 0;
+		return 1;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
