@@ -32,9 +32,9 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text" >*</span>
 						</div>
-						<input name="senha" type="password" class="form-control" required>
-						<a href="<c:url value="paciente/cadastro" />">Cadastre-se aqui</a>
+						<input name="senha" type="password" class="form-control" required><br />
 					</div>
+						<a href="<c:url value="paciente/cadastro" />">Cadastre-se aqui</a>
 				</div>
 			<br /><button class="btn btn-primary" type="submit" >Logar</button>
 		</form>

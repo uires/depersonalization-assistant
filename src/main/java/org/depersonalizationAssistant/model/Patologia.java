@@ -2,20 +2,15 @@ package org.depersonalizationAssistant.model;
 
 import java.util.Calendar;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Patologia {
 	private Long id;
-	private Long idPaciente;
 	private NomePatologia nomePatologia;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Calendar dataInicio;
 
 	public Patologia() {
-	}
-
-	public Patologia(Long id, Long idPaciente, NomePatologia nomePatologia, Calendar dataInicio) {
-		this.id = id;
-		this.idPaciente = idPaciente;
-		this.nomePatologia = nomePatologia;
-		this.dataInicio = dataInicio;
 	}
 
 	public Long getId() {
@@ -24,14 +19,6 @@ public class Patologia {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Long getIdPaciente() {
-		return idPaciente;
-	}
-
-	public void setIdPaciente(Long idPaciente) {
-		this.idPaciente = idPaciente;
 	}
 
 	public NomePatologia getNomePatologia() {

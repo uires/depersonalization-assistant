@@ -16,7 +16,7 @@
 <body>
 	<c:import url="../includes/menu.jsp" />
 	<div class="container" style="margin-top: 100px;">
-		<form action="${spring:mvcUrl('PC#cadastro').build()} " method="POST">
+		<form action="${spring:mvcUrl('RC#cadastrarRelatorio').build()}" method="POST">
 			<div>
 				<label>Descrição</label>
 				<textarea name="descricao" type="text" class="form-control" required></textarea>
@@ -29,10 +29,7 @@
 					<option value="DESREALIZAÇÃO">Desrealização</option>
 				</select>
 			</div>
-			<div>
-				<label>Data Acontecimento</label>
-				<input value="dataInicio" type="text" class="form-controll" required/> 
-			</div>
+			<br />
 			<button class="btn btn-primary" type="submit">Relatar</button>
 		</form>
 	</div>

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 
 import org.depersonalizationAssistant.factory.ConnectionFactory;
 import org.depersonalizationAssistant.model.Patologia;
@@ -56,6 +57,28 @@ public class RelatorioDAO {
 			e.printStackTrace();
 		}
 		return 1;
+	}
+
+	public LinkedList<Relatorio> selectAllRelatoriosPacienteSession(Long id) {
+		LinkedList<Relatorio> relatorios = null;
+		String sql = "SELECT * FROM relatorio WHERE id_paciente = ?";
+		try {
+			Connection conexao = ConnectionFactory.getConnection();
+			PreparedStatement statement = conexao.prepareStatement(sql);
+			statement.setLong(1, id);
+			ResultSet resultSet = statement.executeQuery();
+			while(resultSet.next()){
+				Relatorio relato = new Relatorio();
+				relato.setId(resultSet.getLong("id"));
+				relato.setIdPaciente(resultSet.getLong("id_paciente"));
+				relato.setDescricao(resultSet.getString("descricao"));
+				relato.setPatologia(this.selectPatologiaById(conexao, ));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return relatorios;
 	}
 	
 	

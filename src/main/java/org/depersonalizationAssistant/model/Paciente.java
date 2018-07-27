@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class Paciente {
 
-	private int id;
+	private long id;
 	private String nome;
 	private String email;
 	private String sexo;
@@ -17,7 +17,7 @@ public class Paciente {
 	public Paciente() {
 	}
 
-	public Paciente(int id, String nome, String email, String sexo, String cpf, String telefone, Endereco endereco) {
+	public Paciente(Long id, String nome, String email, String sexo, String cpf, String telefone, Endereco endereco) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
@@ -27,11 +27,11 @@ public class Paciente {
 		this.endereco = endereco;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
