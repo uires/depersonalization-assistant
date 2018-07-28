@@ -96,7 +96,7 @@ public class RelatorioDAO {
 			if (executeQuery.next()) {
 				Patologia patologia = new Patologia();
 				Calendar date = new GregorianCalendar();
-				date.setTime(executeQuery.getDate("date_inicio"));
+				date.setTime(executeQuery.getDate("data_inicio"));
 				patologia.setDataInicio(date);
 				patologia.setNomePatologia(NomePatologia.valueOf(executeQuery.getString("nome_patologia")));
 				preparedStatement.close();

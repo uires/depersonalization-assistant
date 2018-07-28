@@ -61,7 +61,7 @@ public class PacienteDAO {
 			throw new RuntimeErrorException(null, "id está nulo");
 		}
 		Paciente paciente = null;
-		String sql = "SELECT nome, email, sexo, cpf, telefone FROM paciente WHERE id = ?";
+		String sql = "SELECT id, nome, email, sexo, cpf, telefone FROM paciente WHERE id = ?";
 		try {
 			Connection conexao = ConnectionFactory.getConnection();
 			PreparedStatement statement = conexao.prepareStatement(sql);
@@ -69,6 +69,7 @@ public class PacienteDAO {
 			ResultSet executeQuery = statement.executeQuery();
 			if (executeQuery.next()) {
 				paciente = new Paciente();
+				paciente.setId(executeQuery.getLong("id"));
 				paciente.setNome(executeQuery.getString("nome"));
 				paciente.setEmail(executeQuery.getString("email"));
 				paciente.setSexo(executeQuery.getString("sexo"));
@@ -97,7 +98,7 @@ public class PacienteDAO {
 			endereco.setCep(resultSet.getString("cep"));
 			endereco.setCidade(resultSet.getString("cidade"));
 			endereco.setComplemento(resultSet.getString("complemento"));
-			endereco.setEstado(resultSet.getString("resultSet"));
+			endereco.setEstado(resultSet.getString("estado"));
 			endereco.setRua(resultSet.getString("rua"));
 		}
 		resultSet.close();
