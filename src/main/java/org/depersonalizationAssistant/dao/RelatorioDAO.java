@@ -110,5 +110,61 @@ public class RelatorioDAO {
 
 		return null;
 	}
+	
+	public LinkedList<Relatorio> selectAllRelatoriosPublic(){
+		String sql = "SELECT * FROM relatorio WHERE publica = ?";
+		LinkedList<Relatorio> relatorios = new LinkedList<>();
+		try {
+			Connection conexao = ConnectionFactory.getConnection();
+			PreparedStatement statement = conexao.prepareStatement(sql);
+			statement.setBoolean(1, true);
+			ResultSet executeQuery = statement.executeQuery();
+			while(executeQuery.next()){
+				Relatorio relatorio = new Relatorio();
+				relatorio.setDescricao(executeQuery.getString("descricao"));
+				relatorio.setId(executeQuery.getLong("id"));
+				relatorio.setIdPaciente(executeQuery.getLong("id_paciente"));
+				relatorio.setIdPatologia(executeQuery.getLong("id_patologia"));
+				relatorio.setPatologia(this.selectPatologiaById(conexao, executeQuery.getLong("id_patologia")));
+				relatorios.add(relatorio);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return relatorios;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
