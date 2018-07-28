@@ -33,3 +33,11 @@ body {
 .nav-item a {
 	color: white !important;
 }
+.image-container{
+	background-image: url('../image/night-photograph-2183637_1920.jpg');
+	height:553px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	 
+}
