@@ -16,7 +16,6 @@
 <body>
 	<c:import url="../includes/menu.jsp" />
 	<div class="container" style="margin-top: 100px;">
-		<p style="color: red; text-align: center"><i>${notice}</i></p>
 		<table class="table light-table">
 			<thead class="thread">
 				<tr>
@@ -26,6 +25,7 @@
 				</tr>		
 			</thead>
 			<tbody>
+				<tr><td><p style="color: red; text-align: center"><i>${notice}</i></p></td></tr>
 				<c:forEach items="${relatos}" varStatus="index" var="relato">
 					<tr>
 						<td>${relato.descricao}</td>
