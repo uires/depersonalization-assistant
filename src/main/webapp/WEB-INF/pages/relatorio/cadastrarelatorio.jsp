@@ -29,6 +29,12 @@
 					<option value="DESREALIZAÇÃO">Desrealização</option>
 				</select>
 			</div>
+			<div>
+				<label>Patologia</label> 
+				<select name="publico" class="form-control">
+					<option value="ANSIEDADE">Ansiedade</option>
+				</select>
+			</div>
 			<br />
 			<button class="btn btn-primary" type="submit">Relatar</button>
 		</form>

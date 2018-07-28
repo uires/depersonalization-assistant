@@ -15,8 +15,8 @@
 </head>
 <body>
 	<c:import url="../includes/menu.jsp" />
-	<div class="container" style="margin-top: 100px;">
-		<table class="table light-table">
+	<div style="">
+		<table class="table table-hover table-dark">
 			<thead class="thread">
 				<tr>
 					<th>Descrição</th>
@@ -25,7 +25,6 @@
 				</tr>		
 			</thead>
 			<tbody>
-				<tr><td><p style="color: red; text-align: center"><i>${notice}</i></p></td></tr>
 				<c:forEach items="${relatos}" varStatus="index" var="relato">
 					<tr>
 						<td>${relato.descricao}</td>
@@ -35,6 +34,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<p style="color: red; text-align: center"><i>${notice}</i></p>
 	</div>
 </body>
 </html>
