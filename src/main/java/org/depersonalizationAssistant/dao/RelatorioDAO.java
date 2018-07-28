@@ -15,6 +15,8 @@ import org.depersonalizationAssistant.model.Patologia;
 import org.depersonalizationAssistant.model.Relatorio;
 import org.springframework.stereotype.Repository;
 
+import com.mysql.cj.xdevapi.Result;
+
 @Repository
 public class RelatorioDAO {
 
@@ -69,9 +71,9 @@ public class RelatorioDAO {
 			Connection conexao = ConnectionFactory.getConnection();
 			PreparedStatement statement = conexao.prepareStatement(sql);
 			statement.setLong(1, id);
-			ResultSet resultSet = statement.executeQuery();
+			statement.executeQuery();
+			ResultSet resultSet = statement.getResultSet();
 			while (resultSet.next()) {
-
 				Relatorio relato = new Relatorio();
 				relato.setId(resultSet.getLong("id"));
 				relato.setIdPaciente(resultSet.getLong("id_paciente"));
@@ -80,6 +82,8 @@ public class RelatorioDAO {
 				relato.setPatologia(this.selectPatologiaById(conexao, relato.getIdPatologia()));
 				relatoriosList.add(relato);
 			}
+			statement.close();
+			conexao.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -99,8 +103,6 @@ public class RelatorioDAO {
 				date.setTime(executeQuery.getDate("data_inicio"));
 				patologia.setDataInicio(date);
 				patologia.setNomePatologia(NomePatologia.valueOf(executeQuery.getString("nome_patologia")));
-				preparedStatement.close();
-				conexao.close();
 				return patologia;
 			}
 
