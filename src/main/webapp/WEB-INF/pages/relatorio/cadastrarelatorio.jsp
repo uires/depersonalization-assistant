@@ -11,7 +11,7 @@
 <link href="<spring:url value="/resources/css/style.css"/>"	rel="stylesheet" />
 <link href="<spring:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>DA - Cadastro Paciente</title>
+<title>Despersonalização Assistent - Cadastro Relatório</title>
 </head>
 <body>
 	<c:import url="../includes/menu.jsp" />
