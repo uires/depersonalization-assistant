@@ -38,12 +38,12 @@ public class RelatorioController {
 	public ModelAndView relatoriosReturn(HttpSession session) {
 		LinkedList<Relatorio> selectAllRelatoriosPacienteSession = repository
 				.selectAllRelatoriosPacienteSession(SessionModelReturn.getPaciente(session).getId());
-		if (!(selectAllRelatoriosPacienteSession == null)) {
-			return new ModelAndView().addObject("relatos", selectAllRelatoriosPacienteSession);
+		if (selectAllRelatoriosPacienteSession.size() >= 1) {
+			return new ModelAndView("relatorio/meusrelatorios").addObject("relatos",
+					selectAllRelatoriosPacienteSession);
 		} else {
-			return new ModelAndView().addObject("notice", "Você não tem nenhum cadastrado!");
+			return new ModelAndView().addObject("notice", "Você não tem nenhum relatório cadastrado!");
 		}
-
 	}
 
 	public ModelAndView relatosPublicos() {
