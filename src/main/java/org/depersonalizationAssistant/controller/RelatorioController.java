@@ -46,8 +46,9 @@ public class RelatorioController {
 		}
 	}
 
+	@RequestMapping(value = "relatoriopublico", method = RequestMethod.GET)
 	public ModelAndView relatosPublicos() {
-		return null;
+		return new ModelAndView("relatorio/relatoriopublico").addObject("relatoriosPublicos", repository.selectAllRelatoriosPublic());
 	}
 
 }
