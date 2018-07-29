@@ -56,10 +56,10 @@ public class RelatorioController {
 	@RequestMapping(value = "buscar", method = RequestMethod.POST)
 	public ModelAndView buscar(@RequestParam("criterio") String criterioDeBusca) {
 		if (repository.selectRelatorioByDesc(criterioDeBusca).size() > 0) {
-			return new ModelAndView("relatorio/relatoriopublico").addObject("relatoriosPublicos",
+			return this.relatosPublicos().addObject("relatoriosPublicos",
 					repository.selectRelatorioByDesc(criterioDeBusca));
 		} else {
-			return new ModelAndView("relatorio/relatoriopublico").addObject("notice",
+			return this.relatosPublicos().addObject("notice",
 					"Não teve resultado essa buscar!");
 		}
 	}
