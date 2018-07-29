@@ -9,6 +9,7 @@
 </head>
 <body>
 	<c:import url="includes/menu.jsp" />
+	<c:import url="includes/bg.jsp" />
 	<div class="container">
 		<div class=texto-sobre>
 			<pre style="word-wrap: break-word; margin-top: 100px;" >

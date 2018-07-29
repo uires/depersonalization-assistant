@@ -9,7 +9,7 @@
 </head>
 <body>
 	<c:import url="includes/menu.jsp" />
-	
+	<c:import url="includes/bg.jsp" />
 
 
 
