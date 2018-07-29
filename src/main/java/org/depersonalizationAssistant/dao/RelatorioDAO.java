@@ -135,12 +135,13 @@ public class RelatorioDAO {
 	}
 
 	public LinkedList<Relatorio> selectRelatorioByDesc(String criterioDeBusca) {
-		String sql = "SELECT * FROM relatorio descricao LIKE ?";
+		String sql = "SELECT * FROM relatorio WHERE publica = ? AND descricao LIKE ?";
 		LinkedList<Relatorio> relatorios = new LinkedList<>();
 		try {
 			Connection conexao = ConnectionFactory.getConnection();
 			PreparedStatement statement = conexao.prepareStatement(sql);
-			statement.setString(1, "%" + criterioDeBusca + "%");
+			statement.setBoolean(1, true);
+			statement.setString(2, "%" + criterioDeBusca + "%");
 			statement.executeQuery();
 			ResultSet resultSet = statement.getResultSet();
 			while (resultSet.next()) {
@@ -148,7 +149,7 @@ public class RelatorioDAO {
 				relatorio.setId(resultSet.getLong("id"));
 				relatorio.setDescricao(resultSet.getString("descricao"));
 				relatorio.setPatologia(this.selectPatologiaById(conexao, resultSet.getLong("id_patologia")));
-				relatorio.setPublico(resultSet.getBoolean("publico"));
+				relatorio.setPublico(resultSet.getBoolean("publica"));
 				relatorios.add(relatorio);
 			}
 			statement.close();
