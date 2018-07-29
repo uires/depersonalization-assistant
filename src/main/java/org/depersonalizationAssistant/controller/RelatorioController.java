@@ -63,5 +63,11 @@ public class RelatorioController {
 					"Não teve resultado essa buscar!");
 		}
 	}
+	
+	@RequestMapping(value  = "relatorio/discusaorelatorio", method = RequestMethod.GET)
+	public ModelAndView relatorio (){
+		
+		return new ModelAndView();
+	}
 
 }
