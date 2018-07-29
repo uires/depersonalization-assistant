@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -46,9 +47,21 @@ public class RelatorioController {
 		}
 	}
 
-	@RequestMapping(value = "relatoriopublico", method = RequestMethod.GET)
+	@RequestMapping(value = "relatorio/relatoriopublico", method = RequestMethod.GET)
 	public ModelAndView relatosPublicos() {
-		return new ModelAndView("relatorio/relatoriopublico").addObject("relatoriosPublicos", repository.selectAllRelatoriosPublic());
+		return new ModelAndView("relatorio/relatoriopublico").addObject("relatoriosPublicos",
+				repository.selectAllRelatoriosPublic());
+	}
+
+	@RequestMapping(value = "buscar", method = RequestMethod.POST)
+	public ModelAndView buscar(@RequestParam("criterio") String criterioDeBusca) {
+		if (repository.selectAllRelatoriosPublic().size() > 0) {
+			return new ModelAndView("relatorio/relatoriopublico").addObject("relatos",
+					repository.selectAllRelatoriosPublic());
+		} else {
+			return new ModelAndView("relatorio/relatoriopublico").addObject("notice",
+					"Não teve resultado essa buscar!");
+		}
 	}
 
 }
