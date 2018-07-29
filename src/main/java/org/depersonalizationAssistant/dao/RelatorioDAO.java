@@ -15,8 +15,6 @@ import org.depersonalizationAssistant.model.Patologia;
 import org.depersonalizationAssistant.model.Relatorio;
 import org.springframework.stereotype.Repository;
 
-import com.mysql.cj.xdevapi.Result;
-
 @Repository
 public class RelatorioDAO {
 
@@ -112,8 +110,8 @@ public class RelatorioDAO {
 
 		return null;
 	}
-	
-	public LinkedList<Relatorio> selectAllRelatoriosPublic(){
+
+	public LinkedList<Relatorio> selectAllRelatoriosPublic() {
 		String sql = "SELECT * FROM relatorio WHERE publica = ?";
 		LinkedList<Relatorio> relatorios = new LinkedList<>();
 		try {
@@ -121,7 +119,7 @@ public class RelatorioDAO {
 			PreparedStatement statement = conexao.prepareStatement(sql);
 			statement.setBoolean(1, true);
 			ResultSet executeQuery = statement.executeQuery();
-			while(executeQuery.next()){
+			while (executeQuery.next()) {
 				Relatorio relatorio = new Relatorio();
 				relatorio.setDescricao(executeQuery.getString("descricao"));
 				relatorio.setId(executeQuery.getLong("id"));
@@ -135,38 +133,30 @@ public class RelatorioDAO {
 		}
 		return relatorios;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public LinkedList<Relatorio> selectRelatorioByDesc(String criterioDeBusca) {
+		String sql = "SELECT * FROM relatorio descricao LIKE ?";
+		LinkedList<Relatorio> relatorios = new LinkedList<>();
+		try {
+			Connection conexao = ConnectionFactory.getConnection();
+			PreparedStatement statement = conexao.prepareStatement(sql);
+			statement.setString(1, "%" + criterioDeBusca + "%");
+			statement.executeQuery();
+			ResultSet resultSet = statement.getResultSet();
+			while (resultSet.next()) {
+				Relatorio relatorio = new Relatorio();
+				relatorio.setId(resultSet.getLong("id"));
+				relatorio.setDescricao(resultSet.getString("descricao"));
+				relatorio.setPatologia(this.selectPatologiaById(conexao, resultSet.getLong("id_patologia")));
+				relatorio.setPublico(resultSet.getBoolean("publico"));
+				relatorios.add(relatorio);
+			}
+			statement.close();
+			conexao.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return relatorios;
+	}
 
 }
