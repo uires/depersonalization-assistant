@@ -13,6 +13,7 @@ import org.depersonalizationAssistant.factory.ConnectionFactory;
 import org.depersonalizationAssistant.model.NomePatologia;
 import org.depersonalizationAssistant.model.Patologia;
 import org.depersonalizationAssistant.model.Relatorio;
+import org.springframework.context.annotation.ContextAnnotationAutowireCandidateResolver;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -162,6 +163,33 @@ public class RelatorioDAO {
 			e.printStackTrace();
 		}
 		return relatorios;
+	}
+	
+	public Relatorio selectRelatorioById(Long id){
+		String sql = "SELECT * FROM relatotorio WHERE id = ?";
+		Relatorio relatorio = null;
+		try {
+			Connection conexao = ConnectionFactory.getConnection();
+			PreparedStatement statement = conexao.prepareStatement(sql);
+			statement.setLong(1, id);
+			ResultSet executeQuery = statement.executeQuery();
+			if(executeQuery.next()){
+				relatorio = new Relatorio();
+				relatorio.setDescricao(executeQuery.getString("descricao"));
+				relatorio.setId(executeQuery.getLong("id"));
+				relatorio.setIdPaciente(executeQuery.getLong("id_paciente"));
+				relatorio.setPatologia(this.selectPatologiaById(conexao, executeQuery.getLong("id_patologia")));
+				relatorio.setIdPatologia(relatorio.getPatologia().getId());
+				relatorio.setTitulo(executeQuery.getString("titulo"));
+				return relatorio;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return relatorio;
+		
 	}
 
 }

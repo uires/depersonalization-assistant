@@ -59,15 +59,13 @@ public class RelatorioController {
 			return this.relatosPublicos().addObject("relatoriosPublicos",
 					repository.selectRelatorioByDesc(criterioDeBusca));
 		} else {
-			return this.relatosPublicos().addObject("notice",
-					"Não teve resultado essa buscar!");
+			return this.relatosPublicos().addObject("notice", "Não teve resultado essa buscar!");
 		}
 	}
-	
-	@RequestMapping(value  = "relatorio/discusaorelatorio", method = RequestMethod.GET)
-	public ModelAndView relatorio (){
-		
-		return new ModelAndView();
+
+	@RequestMapping(value = "relatorio/discusaorelatorio", method = RequestMethod.GET)
+	public ModelAndView relatorio(@RequestParam("id") Long id) {
+		return new ModelAndView().addObject("relato", repository.selectRelatorioById(id));
 	}
 
 }
