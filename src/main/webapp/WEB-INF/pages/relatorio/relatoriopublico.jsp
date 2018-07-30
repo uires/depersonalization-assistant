@@ -28,7 +28,11 @@
 			<tbody>
 				<c:forEach items="${relatoriosPublicos}" varStatus="index" var="relato">
 					<tr>
-						<td style="width: auto; height: 95px;">${relato.descricao}</td>
+						<td style="width: auto; height: 95px;">
+							<a href="<c:url value="/relatorio/discusaorelatorio?id=${relato.id}" />" >
+								${relato.descricao}
+							</a>
+						</td>
 						<td>${relato.patologia.nomePatologia}</td>
 						<td><fmt:formatDate  pattern="dd/MM/yyy" value="${relato.patologia.dataInicio.time}"/></td>
 					<tr>

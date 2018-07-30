@@ -46,17 +46,17 @@
 					<a class="nav-link" href="<c:url value="/dashboard" />">Dashboard<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Relatórios</a>
+					<a class="nav-link" href="<c:url value="/relatorio/relatoriopublico" />">Relatórios</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Meus Relatórios</a>
+					<a class="nav-link" href="<c:url value="/relatorio/meusrelatorios" />">Meus Relatórios</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="<c:url value="/sobre" />">O que é despersonalização?</a>
 				</li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search" >
+			<form class="form-inline my-2 my-lg-0" method="POST" action="buscar">
+				<input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search" name="criterio">
 				<button class="btn btn-outline my-2 my-sm-0" type="submit">Buscar</button>
 			</form>
 		</div>

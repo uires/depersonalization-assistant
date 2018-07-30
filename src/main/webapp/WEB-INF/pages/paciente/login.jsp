@@ -34,7 +34,7 @@
 						</div>
 						<input name="senha" type="password" class="form-control" required><br />
 					</div>
-						<a href="<c:url value="paciente/cadastro" />">Cadastre-se aqui</a>
+						<a href="<c:url value="/paciente/cadastro" />">Cadastre-se aqui</a>
 				</div>
 			<br /><button class="btn btn-primary" type="submit" >Logar</button>
 		</form>
