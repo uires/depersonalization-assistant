@@ -37,6 +37,7 @@
 						<a href="<c:url value="/paciente/cadastro" />">Cadastre-se aqui</a>
 				</div>
 			<br /><button class="btn btn-primary" type="submit" >Logar</button>
+  			${warning}
 		</form>
 	</div>
 </body>

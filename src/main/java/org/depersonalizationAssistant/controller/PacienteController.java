@@ -43,8 +43,7 @@ public class PacienteController {
 			sessionHttpObjectServlet.setAttribute("usuario.logado", dao.logar(paciente));
 			return new ModelAndView("redirect:/dashboard");
 		} else {
-			System.out.println("veio nulo");
-			return new ModelAndView("redirect:/login");
+			return new ModelAndView("paciente/login");
 		}
 	}
 }
