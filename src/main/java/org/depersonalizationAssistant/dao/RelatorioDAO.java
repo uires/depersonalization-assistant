@@ -5,15 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 import org.depersonalizationAssistant.factory.ConnectionFactory;
+import org.depersonalizationAssistant.model.Comentario;
 import org.depersonalizationAssistant.model.NomePatologia;
 import org.depersonalizationAssistant.model.Patologia;
 import org.depersonalizationAssistant.model.Relatorio;
-import org.springframework.context.annotation.ContextAnnotationAutowireCandidateResolver;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -166,7 +167,7 @@ public class RelatorioDAO {
 	}
 	
 	public Relatorio selectRelatorioById(Long id){
-		String sql = "SELECT * FROM relatotorio WHERE id = ?";
+		String sql = "SELECT * FROM relatorio WHERE id = ?";
 		Relatorio relatorio = null;
 		try {
 			Connection conexao = ConnectionFactory.getConnection();
@@ -181,7 +182,7 @@ public class RelatorioDAO {
 				relatorio.setPatologia(this.selectPatologiaById(conexao, executeQuery.getLong("id_patologia")));
 				relatorio.setIdPatologia(relatorio.getPatologia().getId());
 				relatorio.setTitulo(executeQuery.getString("titulo"));
-				return relatorio;
+				relatorio.setComentarios(this.selectAllComentariosById(conexao, id));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -190,6 +191,33 @@ public class RelatorioDAO {
 		
 		return relatorio;
 		
+	}
+
+	private ArrayList<Comentario> selectAllComentariosById(Connection conexao, Long id) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT *");
+		sql.append(" FROM comentario ");
+		sql.append("WHERE id_relatorio = ?");
+		ArrayList<Comentario> comentarios = new ArrayList<>();
+		try {
+			PreparedStatement prepareStatement = conexao.prepareStatement(sql.toString());
+			prepareStatement.setLong(1, id);
+			prepareStatement.execute();
+			ResultSet set = prepareStatement.getResultSet();
+			while(set.next()){
+				Comentario comentario = new Comentario();
+				comentario.setNomeAutor(set.getString("nome_autor"));
+				comentario.setTitulo(set.getString("titulo"));
+				comentario.setDescricao(set.getString("descricao"));
+				comentario.setId(set.getLong("id"));
+				comentario.setIdAutor(set.getLong("id_autor"));
+				comentarios.add(comentario);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return comentarios;
 	}
 
 }
