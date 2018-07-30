@@ -20,13 +20,14 @@ public class RelatorioDAO {
 
 	public void cadastraRelatorio(Relatorio relatorio, Long id) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("INSERT INTO relatorio ( " + "id_paciente, id_patologia, descricao) " + "VALUES (?, ?, ?)");
+		sql.append("INSERT INTO relatorio ( " + "id_paciente, id_patologia, titulo, descricao) " + "VALUES (?, ?, ?, ?)");
 		try {
 			Connection conexao = ConnectionFactory.getConnection();
 			PreparedStatement preparedStatement = conexao.prepareStatement(sql.toString());
 			preparedStatement.setLong(1, id);
 			preparedStatement.setLong(2, this.insertPatologia(conexao, relatorio.getPatologia()));
-			preparedStatement.setString(3, relatorio.getDescricao());
+			preparedStatement.setString(3, relatorio.getTitulo());
+			preparedStatement.setString(4, relatorio.getDescricao());
 			preparedStatement.execute();
 			preparedStatement.close();
 			conexao.close();
@@ -75,6 +76,7 @@ public class RelatorioDAO {
 				Relatorio relato = new Relatorio();
 				relato.setId(resultSet.getLong("id"));
 				relato.setIdPaciente(resultSet.getLong("id_paciente"));
+				relato.setTitulo(resultSet.getString("titulo"));
 				relato.setDescricao(resultSet.getString("descricao"));
 				relato.setIdPatologia(resultSet.getLong("id_patologia"));
 				relato.setPatologia(this.selectPatologiaById(conexao, relato.getIdPatologia()));
@@ -121,6 +123,7 @@ public class RelatorioDAO {
 			ResultSet executeQuery = statement.executeQuery();
 			while (executeQuery.next()) {
 				Relatorio relatorio = new Relatorio();
+				relatorio.setTitulo(executeQuery.getString("titulo"));
 				relatorio.setDescricao(executeQuery.getString("descricao"));
 				relatorio.setId(executeQuery.getLong("id"));
 				relatorio.setIdPaciente(executeQuery.getLong("id_paciente"));
@@ -147,6 +150,7 @@ public class RelatorioDAO {
 			while (resultSet.next()) {
 				Relatorio relatorio = new Relatorio();
 				relatorio.setId(resultSet.getLong("id"));
+				relatorio.setTitulo(resultSet.getString("titulo"));
 				relatorio.setDescricao(resultSet.getString("descricao"));
 				relatorio.setPatologia(this.selectPatologiaById(conexao, resultSet.getLong("id_patologia")));
 				relatorio.setPublico(resultSet.getBoolean("publica"));
