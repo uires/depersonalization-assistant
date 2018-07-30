@@ -17,9 +17,11 @@ body {
 .controll-nav a {
 	color: white;
 }
-.controll-nav li img{
+
+.controll-nav li img {
 	vertical-align: middle;
 }
+
 .controll-nav li {
 	list-style: none;
 	float: left;
@@ -30,14 +32,27 @@ body {
 .controll-nav {
 	float: left;
 }
+
 .nav-item a {
 	color: white !important;
 }
-.image-container{
+
+.image-container {
 	background-image: url('../image/night-photograph-2183637_1920.jpg');
-	height:553px;
+	height: 553px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
-	 
 }
+.img-discuc img{
+	border-radius: 55px;
+}
+.img-discuc {
+	float: left;
+	margin-right: 25px;
+	font-size: 13px;
+	text-align: center;
+}
+
+
+
