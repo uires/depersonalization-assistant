@@ -4,9 +4,11 @@ import java.util.Calendar;
 
 public class Comentario {
 	private Long id;
-	private Long id_relatorio;
+	private Long idRelatorio;
+	private Long idAutor;
 	private String titulo;
 	private String nomeAutor;
+	private String descricao;
 	private Calendar dataPostagem;
 
 	public Long getId() {
@@ -18,11 +20,7 @@ public class Comentario {
 	}
 
 	public Long getId_relatorio() {
-		return id_relatorio;
-	}
-
-	public void setId_relatorio(Long id_relatorio) {
-		this.id_relatorio = id_relatorio;
+		return idRelatorio;
 	}
 
 	public String getTitulo() {
@@ -31,6 +29,22 @@ public class Comentario {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public Long getIdRelatorio() {
+		return idRelatorio;
+	}
+
+	public void setIdRelatorio(Long idRelatorio) {
+		this.idRelatorio = idRelatorio;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getNomeAutor() {
@@ -47,6 +61,14 @@ public class Comentario {
 
 	public void setDataPostagem(Calendar dataPostagem) {
 		this.dataPostagem = dataPostagem;
+	}
+
+	public Long getIdAutor() {
+		return idAutor;
+	}
+
+	public void setIdAutor(Long idAutor) {
+		this.idAutor = idAutor;
 	}
 
 }
