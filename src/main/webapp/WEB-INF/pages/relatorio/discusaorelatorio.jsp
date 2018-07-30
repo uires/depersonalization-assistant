@@ -6,15 +6,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Despersonalização Assistente - ${} </title>
+<link href="<spring:url value="/resources/css/style.css"/>"	rel="stylesheet" />
+<link href="<spring:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" />
+<title>Despersonalização Assistente - ${relato.titulo} </title>
 </head>
 <body>
+	<c:import url="../includes/menu.jsp" />
+	<div>
+	
+	</div>
 	<div class="d-flex flex-column bd-highlight mb-3">
-		<c:forEach var="item" items="${relato}">
-			<div class="p-2 bd-highlight">
-				<div>${item.descricao}</div>
-				<div>${item.patologia.nomePatologia}</div>
-				<div><fmt:formatDate value="${item.patologia.dataInicio.time}" pattern="dd/MM/yyyy"/></div>			
+		<hr />
+		<c:forEach var="comentario" items="${relato.comentarios}">
+			<div class="p-2 bd-highlight div-controll">
+				<div  class="img-"><img src="" width="155" height="155" /></div>
+				<div><h3>${comentario.titulo}</h3></div>
+				<div>Autor: ${comentario.nomeAutor}</div><br />
+				<div>${comentario.descricao}</div>
 			</div>
 		</c:forEach>
 	</div>
