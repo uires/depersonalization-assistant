@@ -4,7 +4,9 @@ public class Relatorio {
 	private Long id;
 	private Long idPaciente;
 	private Long idPatologia;
+	private String titulo;
 	private Patologia patologia;
+	private boolean publico;
 	private String descricao;
 
 	public Relatorio() {
@@ -24,6 +26,14 @@ public class Relatorio {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public Long getIdPaciente() {
@@ -56,6 +66,14 @@ public class Relatorio {
 
 	public void setIdPatologia(Long idPatologia) {
 		this.idPatologia = idPatologia;
+	}
+
+	public boolean isPublico() {
+		return publico;
+	}
+
+	public void setPublico(boolean publico) {
+		this.publico = publico;
 	}
 
 }
