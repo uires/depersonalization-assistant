@@ -62,11 +62,4 @@ public class RelatorioController {
 			return this.relatosPublicos().addObject("notice", "Não teve resultado essa buscar!");
 		}
 	}
-
-	@RequestMapping(value = "relatorio/discusaorelatorio", method = RequestMethod.GET)
-	public ModelAndView relatorio(Long id) {
-		Relatorio selectRelatorioById = repository.selectRelatorioById(id);
-		return new ModelAndView("relatorio/discusaorelatorio").addObject("relato", selectRelatorioById);
-	}
-
 }
