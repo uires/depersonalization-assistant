@@ -1,5 +1,7 @@
 package org.depersonalizationAssistant.model;
 
+import java.util.ArrayList;
+
 public class Relatorio {
 	private Long id;
 	private Long idPaciente;
@@ -8,16 +10,9 @@ public class Relatorio {
 	private Patologia patologia;
 	private boolean publico;
 	private String descricao;
+	private ArrayList<Comentario> comentarios;
 
 	public Relatorio() {
-
-	}
-
-	public Relatorio(Long id, Long idPaciente, Patologia patologia, String descricao) {
-		this.id = id;
-		this.idPaciente = idPaciente;
-		this.patologia = patologia;
-		this.descricao = descricao;
 	}
 
 	public Long getId() {
@@ -76,4 +71,11 @@ public class Relatorio {
 		this.publico = publico;
 	}
 
+	public ArrayList<Comentario> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(ArrayList<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
 }
