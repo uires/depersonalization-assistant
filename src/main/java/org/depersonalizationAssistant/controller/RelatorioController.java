@@ -64,8 +64,9 @@ public class RelatorioController {
 	}
 
 	@RequestMapping(value = "relatorio/discusaorelatorio", method = RequestMethod.GET)
-	public ModelAndView relatorio(@RequestParam("id") Long id) {
-		return new ModelAndView().addObject("relato", repository.selectRelatorioById(id));
+	public ModelAndView relatorio(Long id) {
+		Relatorio selectRelatorioById = repository.selectRelatorioById(id);
+		return new ModelAndView("relatorio/discusaorelatorio").addObject("relato", selectRelatorioById);
 	}
 
 }
