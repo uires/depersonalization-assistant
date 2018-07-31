@@ -19,10 +19,6 @@ public class Comentario {
 		this.id = id;
 	}
 
-	public Long getId_relatorio() {
-		return idRelatorio;
-	}
-
 	public String getTitulo() {
 		return titulo;
 	}
