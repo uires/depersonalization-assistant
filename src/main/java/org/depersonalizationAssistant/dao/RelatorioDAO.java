@@ -22,7 +22,8 @@ public class RelatorioDAO {
 
 	public void cadastraRelatorio(Relatorio relatorio, Long id) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("INSERT INTO relatorio ( " + "id_paciente, id_patologia, titulo, descricao) " + "VALUES (?, ?, ?, ?)");
+		sql.append(
+				"INSERT INTO relatorio ( " + "id_paciente, id_patologia, titulo, descricao) " + "VALUES (?, ?, ?, ?)");
 		try {
 			Connection conexao = ConnectionFactory.getConnection();
 			PreparedStatement preparedStatement = conexao.prepareStatement(sql.toString());
@@ -165,8 +166,8 @@ public class RelatorioDAO {
 		}
 		return relatorios;
 	}
-	
-	public Relatorio selectRelatorioById(Long id){
+
+	public Relatorio selectRelatorioById(Long id) {
 		String sql = "SELECT * FROM relatorio WHERE id = ?";
 		Relatorio relatorio = null;
 		try {
@@ -174,7 +175,7 @@ public class RelatorioDAO {
 			PreparedStatement statement = conexao.prepareStatement(sql);
 			statement.setLong(1, id);
 			ResultSet executeQuery = statement.executeQuery();
-			if(executeQuery.next()){
+			if (executeQuery.next()) {
 				relatorio = new Relatorio();
 				relatorio.setDescricao(executeQuery.getString("descricao"));
 				relatorio.setId(executeQuery.getLong("id"));
@@ -187,10 +188,9 @@ public class RelatorioDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		return relatorio;
-		
+
 	}
 
 	private ArrayList<Comentario> selectAllComentariosById(Connection conexao, Long id) {
@@ -204,7 +204,7 @@ public class RelatorioDAO {
 			prepareStatement.setLong(1, id);
 			prepareStatement.execute();
 			ResultSet set = prepareStatement.getResultSet();
-			while(set.next()){
+			while (set.next()) {
 				Comentario comentario = new Comentario();
 				comentario.setNomeAutor(set.getString("nome_autor"));
 				comentario.setTitulo(set.getString("titulo"));
@@ -213,11 +213,33 @@ public class RelatorioDAO {
 				comentario.setIdAutor(set.getLong("id_autor"));
 				comentarios.add(comentario);
 			}
-			
+			prepareStatement.close();
+			conexao.close();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return comentarios;
+	}
+
+	public void adicionarComentario(Long idRelatorio, Comentario comentario) {
+		String sql = "INSERT INTO comentario ("
+				+ "id_relatorio, id_autor, titulo, nome_autor, descricao, data_postagem)"
+				+ " VALUES (?, ?, ?, ?, ?, NOW()) ";
+		try{ 
+		Connection conexao = ConnectionFactory.getConnection();
+		PreparedStatement statement = conexao.prepareStatement(sql);
+		statement.setLong(1, idRelatorio);
+		statement.setLong(2, comentario.getIdAutor());
+		statement.setString(3, comentario.getTitulo());
+		statement.setString(4, comentario.getNomeAutor());
+		statement.setString(5, comentario.getDescricao());
+		statement.execute();
+		statement.close();
+		conexao.close();
+		} catch(SQLException error){
+			error.printStackTrace();
+		}
 	}
 
 }
