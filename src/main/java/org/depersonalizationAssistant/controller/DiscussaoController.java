@@ -30,4 +30,9 @@ public class DiscussaoController {
 		repository.adicionarComentario(comentario.getIdRelatorio(), comentario);
 		return this.relatorio(comentario.getIdRelatorio());
 	}
+	
+	@RequestMapping(value = "editarcomentario", method = RequestMethod.GET)
+	public ModelAndView editarcomentario(Long id) {
+		return new ModelAndView("relatorio/editar");
+	}
 }
