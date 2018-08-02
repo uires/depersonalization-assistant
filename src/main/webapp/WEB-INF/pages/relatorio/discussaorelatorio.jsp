@@ -39,9 +39,9 @@
 			</div>
 		</c:forEach>
 	</div>
-	<div>
-		<form method="POST" action="${spring:mvcUrl('').build()}">
-			<input type="hidden" value="${relato.id}">
+	<div class="container">
+		<form method="POST" action="${spring:mvcUrl('DC#enviarComentario').build()}">
+			<input type="hidden" value="${relato.id}" name="idRelatorio">
 			<div>
 				<label>Título</label>
 				<input type="text" name="titulo" class="form-control" />
@@ -49,7 +49,7 @@
 			
 			<div>
 				<label>Descrição</label>
-				<textarea rows="3" cols="5" name="descricao" class="form-controll" ></textarea>
+    			<textarea class="form-control" rows="3" name="descricao"></textarea>
 			</div>
 			<button class="btn btn-primary" type="submit">Enviar</button>					
 		</form>
