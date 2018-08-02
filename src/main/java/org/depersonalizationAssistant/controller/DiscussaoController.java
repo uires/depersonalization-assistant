@@ -16,15 +16,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class DiscussaoController {
 	@Autowired
 	private RelatorioDAO repository;
-	
+
 	@RequestMapping(value = "relatorio/discusaorelatorio", method = RequestMethod.GET)
 	public ModelAndView relatorio(Long id) {
 		Relatorio selectRelatorioById = repository.selectRelatorioById(id);
-		return new ModelAndView("relatorio/discusaorelatorio").addObject("relato", selectRelatorioById);
+		return new ModelAndView("relatorio/discussaorelatorio").addObject("relato", selectRelatorioById);
 	}
-	
-	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView enviarComentario(Comentario comentario, HttpSession sessao){
+
+	@RequestMapping(value = "enviarComentario", method = RequestMethod.POST)
+	public ModelAndView enviarComentario(Comentario comentario, HttpSession sessao) {
 		comentario.setIdAutor(SessionModelReturn.getPaciente(sessao).getId());
 		comentario.setNomeAutor(SessionModelReturn.getPaciente(sessao).getNome());
 		repository.adicionarComentario(comentario.getIdRelatorio(), comentario);
