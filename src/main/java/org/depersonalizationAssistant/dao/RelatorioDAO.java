@@ -241,5 +241,21 @@ public class RelatorioDAO {
 			error.printStackTrace();
 		}
 	}
-
+	
+	public void updateRelatorio (Long id, String descricao){
+		String sql = "UPDATE relatorio SET descricao = ? WHERE id = ?";
+		try {
+			Connection conexao = ConnectionFactory.getConnection();
+			PreparedStatement stat = conexao.prepareStatement(sql);
+			stat.setString(1, descricao);
+			stat.setLong(2, id);
+			stat.execute();
+			stat.close();
+			conexao.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 }
