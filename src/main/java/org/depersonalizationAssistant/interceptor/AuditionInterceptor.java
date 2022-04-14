@@ -16,8 +16,8 @@ public class AuditionInterceptor extends HandlerInterceptorAdapter {
 			return true;
 		}
 
-		if ((request.getSession().getAttribute("usuario.logado") != null)
-				&& (request.getRequestURI().endsWith("cadastro"))) {
+		if (request.getSession().getAttribute("usuario.logado") != null
+				&& request.getRequestURI().endsWith("cadastro")) {
 			response.sendRedirect("/");
 			return false;
 		}
@@ -25,14 +25,12 @@ public class AuditionInterceptor extends HandlerInterceptorAdapter {
 				&& request.getRequestURI().endsWith("login")) {
 			response.sendRedirect("/dashboard");
 		}
+
 		if (request.getSession().getAttribute("usuario.logado") != null) {
 			return true;
-		} else {
-			response.sendRedirect("/");
-
-			return false;
 		}
 
+		response.sendRedirect(request.getContextPath() + "/login");
+		return false;
 	}
-
 }
