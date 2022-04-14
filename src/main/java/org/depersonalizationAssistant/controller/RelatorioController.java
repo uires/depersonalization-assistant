@@ -18,39 +18,45 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RelatorioController {
+
 	@Autowired
 	private RelatorioDAO repository;
 
 	@RequestMapping("relatorio/cadastrar")
 	public ModelAndView cadastrarMap() {
-		return new ModelAndView("relatorio/cadastrarelatorio");
+		return new ModelAndView("relatorio/cadastra-relatorio");
 	}
 
 	@RequestMapping(value = "cadastrarRelatorio", method = RequestMethod.POST)
 	public ModelAndView cadastrarRelatorio(Relatorio relatorio, Patologia patologia, HttpSession sessao) {
+
 		patologia.setDataInicio(Calendar.getInstance());
 		relatorio.setPatologia(patologia);
 		relatorio.setIdPaciente(SessionModelReturn.getPaciente(sessao).getId());
+
 		repository.cadastraRelatorio(relatorio, relatorio.getIdPaciente());
 		return new ModelAndView("/");
 	}
 
-	@RequestMapping(value = "relatorio/meusrelatorios", method = RequestMethod.GET)
+	@RequestMapping(value = "relatorio/meus-relatorios", method = RequestMethod.GET)
 	public ModelAndView relatoriosReturn(HttpSession session) {
 		LinkedList<Relatorio> selectAllRelatoriosPacienteSession = repository
 				.selectAllRelatoriosPacienteSession(SessionModelReturn.getPaciente(session).getId());
+
 		if (selectAllRelatoriosPacienteSession.size() >= 1) {
-			return new ModelAndView("relatorio/meusrelatorios").addObject("relatos",
+			return new ModelAndView("relatorio/meus-relatorios").addObject("relatos",
 					selectAllRelatoriosPacienteSession);
-		} else {
-			return new ModelAndView().addObject("notice", "Você não tem nenhum relatório cadastrado!");
 		}
+
+		return new ModelAndView("relatorio/meus-relatorios").addObject("notice",
+				"Você não tem nenhum relatório cadastrado.");
 	}
 
-	@RequestMapping(value = "relatorio/relatoriopublico", method = RequestMethod.GET)
+	@RequestMapping(value = "relatorio/relatorios-publicos", method = RequestMethod.GET)
 	public ModelAndView relatosPublicos() {
-		return new ModelAndView("relatorio/relatoriopublico").addObject("relatoriosPublicos",
-				repository.selectAllRelatoriosPublic());
+		LinkedList<Relatorio> relatorios = this.repository.selectAllRelatoriosPublic();
+		System.out.println(relatorios.get(0));
+		return new ModelAndView("relatorio/relatorio-publico").addObject("relatoriosPublicos", relatorios);
 	}
 
 	@RequestMapping(value = "buscar", method = RequestMethod.POST)
@@ -58,8 +64,8 @@ public class RelatorioController {
 		if (repository.selectRelatorioByDesc(criterioDeBusca).size() > 0) {
 			return this.relatosPublicos().addObject("relatoriosPublicos",
 					repository.selectRelatorioByDesc(criterioDeBusca));
-		} else {
-			return this.relatosPublicos().addObject("notice", "Não teve resultado essa buscar!");
 		}
+
+		return this.relatosPublicos().addObject("notice", "Não teve resultado essa buscar.");
 	}
 }

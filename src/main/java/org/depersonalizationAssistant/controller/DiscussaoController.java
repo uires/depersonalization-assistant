@@ -17,10 +17,12 @@ public class DiscussaoController {
 	@Autowired
 	private RelatorioDAO repository;
 
-	@RequestMapping(value = "relatorio/discusaorelatorio", method = RequestMethod.GET)
+	@RequestMapping(value = "relatorio/discusao-relatorio", method = RequestMethod.GET)
 	public ModelAndView relatorio(Long id) {
+
 		Relatorio selectRelatorioById = repository.selectRelatorioById(id);
-		return new ModelAndView("relatorio/discussaorelatorio").addObject("relato", selectRelatorioById);
+
+		return new ModelAndView("relatorio/discussao-relatorio").addObject("relato", selectRelatorioById);
 	}
 
 	@RequestMapping(value = "enviarComentario", method = RequestMethod.POST)
@@ -28,9 +30,10 @@ public class DiscussaoController {
 		comentario.setIdAutor(SessionModelReturn.getPaciente(sessao).getId());
 		comentario.setNomeAutor(SessionModelReturn.getPaciente(sessao).getNome());
 		repository.adicionarComentario(comentario.getIdRelatorio(), comentario);
+
 		return this.relatorio(comentario.getIdRelatorio());
 	}
-	
+
 	@RequestMapping(value = "editarcomentario", method = RequestMethod.GET)
 	public ModelAndView editarcomentario(Long id) {
 		return new ModelAndView("relatorio/editar");
