@@ -9,10 +9,10 @@
 <link href="<spring:url value="/resources/css/style.css" />"
 	rel="stylesheet" />
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
-	<div class="container">
-		<a class="navbar-brand" href="<c:url value="/dashboard" />">
-	 	 <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBl
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<div class="container">
+	<a class="navbar-brand" href="<c:url value="/dashboard" />"> <img
+		src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBl
 					bmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0c
 					mF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMC
 					BCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkc
@@ -34,31 +34,35 @@
 					Pgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9
 					nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC
 					9nPgo8L3N2Zz4K" />
-				</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"	data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-	
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="<c:url value="/dashboard" />">Dashboard<span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<c:url value="/relatorio/relatoriopublico" />">Relatórios</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<c:url value="/relatorio/meusrelatorios" />">Meus Relatórios</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<c:url value="/sobre" />">O que é despersonalização?</a>
-				</li>
-			</ul>
-			<form class="form-inline my-2 my-lg-0" method="POST" action="buscar">
-				<input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search" name="criterio">
-				<button class="btn btn-outline my-2 my-sm-0" type="submit">Buscar</button>
-			</form>
-		</div>
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a class="nav-link"
+				href="<c:url value="/dashboard" />">Dashboard</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="<c:url value="/relatorio/relatorios-publicos" />">Relatórios</a>
+			</li>
+			<li class="nav-item"><a class="nav-link"
+				href="<c:url value="/relatorio/meus-relatorios" />">Meus
+					Relatórios</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="<c:url value="/sobre" />">O que é despersonalização?</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="<c:url value="/sair" />">Sair</a></li>
+
+		</ul>
+		<form class="form-inline my-2 my-lg-0" method="POST" action="buscar">
+			<input class="form-control mr-sm-2" type="search"
+				placeholder="Buscar..." aria-label="Search" name="criterio">
+			<button class="btn btn-outline my-2 my-sm-0" type="submit">Buscar</button>
+		</form>
 	</div>
+</div>
 </nav>

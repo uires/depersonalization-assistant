@@ -8,37 +8,42 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<link href="<spring:url value="/resources/css/style.css"/>"	rel="stylesheet" />
-<link href="<spring:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" />
+<link href="<spring:url value="/resources/css/style.css"/>"
+	rel="stylesheet" />
+<link href="<spring:url value="/resources/css/bootstrap.min.css" />"
+	rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Despersonalização Assistente - Meus Relatorios</title>
 </head>
 <body>
 	<c:import url="../includes/menu.jsp" />
-	<div style="">
-		<table class="table table-hover table-dark">
+	<div class="container">
+		<table class="table table-hover ">
 			<thead class="thread">
 				<tr>
 					<th>Descrição</th>
 					<th>Patologia</th>
 					<th>Data</th>
-				</tr>		
+					<th>Author</th>
+				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${relatos}" varStatus="index" var="relato">
+				<c:forEach items="${relatoriosPublicos}" varStatus="index"
+					var="relato">
 					<tr>
-						<td>
-							<a href="<c:url value="/relatorio/discusaorelatorio?id=${relato.id}" />" >
-								${relato.descricao}
-							</a>
-						</td>
+						<td><a
+							href="<c:url value="/relatorio/discusao-relatorio?id=${relato.id}" />">
+								${relato.descricao} </a></td>
 						<td>${relato.patologia.nomePatologia}</td>
-						<td><fmt:formatDate  pattern="dd/MM/yyy" value="${relato.patologia.dataInicio.time}"/></td>
-					<tr>				
+						<td><fmt:formatDate pattern="dd/MM/yyy"
+								value="${relato.patologia.dataInicio.time}" /></td>
+					<tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<p style="color: red; text-align: center"><i>${notice}</i></p>
+		<c:if test="${notice != null}">
+			<div class="alert alert-primary" role="alert">${notice}</div>
+		</c:if>
 	</div>
 </body>
 </html>
